@@ -19,15 +19,16 @@ This code snippet will move a user from Active Directory to a specified organiza
 
 ```json
 {
-    "UserPrincipalName": "testuser@mydomain.local",
-     "TargetOu" : "OU=ou2,OU=development,DC=mydomain,DC=local"
+    "UserIdentity": "testuser@mydomain.local",
+    "TargetOu" : "OU=ou2,OU=development,DC=mydomain,DC=local"
 }
 ```
 
 > :exclamation: It is important to note that the names of your form fields might differ. Ensure that the `$formObject` hashtable is appropriately adjusted to match your form fields.
+> The field **UserIdentity** accepts different values [See the Microsoft Docs page](https://learn.microsoft.com/en-us/powershell/module/activedirectory/move-adobject?view=windowsserver2022-ps#description)
 
 2. Imports the ActiveDirectory module.
 
-3. Verifies that the account that must be deleted exists based on the `userPrincipalName` using the `Get-ADUser` cmdlet.
+3. Verifies that the account that must be deleted exists based on the `UserIdentity` using the `Get-ADUser` cmdlet.
 
 4. If the user does exist, the account is moved using the `Move-ADObject` cmdlet, otherwise an warning is generated.
